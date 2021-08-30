@@ -48,7 +48,7 @@ export default {
 
   methods: {
     deng(){
-        this.$router.push('/index')
+        this.$router.push('/deng')
     },
     async gai(){
         let res=await img({file:img}).then(res=>{

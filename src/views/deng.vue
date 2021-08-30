@@ -1,26 +1,26 @@
 <template>
     <div>
-        <div class="tu">
-            <img src="@/assets/1.png" alt="">
-        </div>
-        <div class="ge"></div>
-       <p class="p1">
-           <van-field
+      <div class="tu">
+          <img src="@/assets/1.png" alt="">
+      </div>
+      <div class="ge"></div>
+      <p class="p1">
+          <van-field
             v-model="tel"
             center
             clearable
            placeholder="请输入手机号"
             >
             <template #button>
-                <van-button type="default" class="btn" v-if="!isshow" @click="list">获取验证码{{time}}</van-button>
+                <van-button type="default" class="btn" v-if="!isshow" @click="list">{{txt}}</van-button>
             </template>
-            </van-field>
-       </p>
-       <p class="p2">
-           <van-cell-group>
-                 <van-field v-model="code" placeholder="请输入短信验证码"  />
-            </van-cell-group>
-       </p>
+          </van-field>
+      </p>
+      <p class="p2">
+          <van-cell-group>
+              <van-field v-model="code" placeholder="请输入短信验证码"  />
+          </van-cell-group>
+      </p>
        <p class="p3">
            <van-cell-group>
             <van-field
@@ -28,7 +28,7 @@
                 placeholder="未注册的手机号将自动注册"
             >
              <template #button>
-                <van-button type="default" class="btn1" @click="go" >使用密码登录</van-button>
+                <van-button type="default" class="btn1" @click="go" >密码登录</van-button>
             </template>
             </van-field>
             </van-cell-group>
@@ -49,6 +49,7 @@
 
 <script>
 import { smsCode, login } from "@/http/api";
+import { setInterval, clearInterval } from 'timers';
 export default {
   components: {},
   data() {
@@ -56,7 +57,7 @@ export default {
       tel: "",
       code: "",
       isshow: false,
-      time: ""
+      txt: "获取验证码登录",
     };
   },
 
@@ -68,22 +69,18 @@ export default {
         this.$toast.fail("手机号格式错误");
         return false;
       }
+      this.time=3
       this.isshow = true;
-      let res = await smsCode({ mobile: this.tel, sms_type: "login" }).then(
-        res => {
-          console.log(res, "12");
-          this.isshow = true;
-          this.time = 60;
-          let that = this;
-          var timer = setInterval(function() {
-            that.time--;
-            if (that.time <= 0) {
-              that.isshow = false;
-              clearInterval(timer);
-            }
-          }, 1000);
+      var timer=setInterval(()=>{
+        this.txt=`还有${this.time}秒后登录`
+        this.time--
+        if(this.time<=0){
+          this.fail=false
+          clearInterval(timer)
+          this.txt="获取登录验证码"
         }
-      );
+      },1000)
+      let res = await smsCode({ mobile: this.tel, sms_type: "login" })  
     },
 
     //登录
@@ -92,10 +89,13 @@ export default {
         mobile: this.tel,
         sms_code: this.code,
         type: 2,
-        client: 1
+        client: '1'
       }).then(res => {
         if (res.code == 200) {
+          this.$store.commit("setToken",res.data.remember_token)
+          // console.log(this.store.state.token)
           this.$router.push("/Index");
+          console.log(res.data.remember_token)
         }
       });
     },
@@ -113,7 +113,7 @@ export default {
   width: 100%;
   img {
     width: 100%;
-    height: 300px;
+    height: 400px;
   }
 }
 .ge {
