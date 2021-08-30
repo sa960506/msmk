@@ -117,8 +117,8 @@ export default {
 .tu {
   width: 100%;
   img {
-    width: 100%;
-    height: 500px;
+    width: 100%;  
+
   }
 }
 .ge {

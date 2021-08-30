@@ -9,6 +9,7 @@ const vuexLocal = new VuexPersistence({
 export default new Vuex.Store({
   state: {
     token:{}
+  
   },
   mutations: {
     setToken(state,arg){
