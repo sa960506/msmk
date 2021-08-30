@@ -1,7 +1,7 @@
 <template>
   <div class="set">
     <div class="header">
-      <img src="@/assets/1.png" alt="" class="img"> 
+       <p class="p1">设置密码</p>
     </div>
     <div class="box">
       <div :class="active != 1 ? 'int_num' : 'int_num int_num_active'">
@@ -64,6 +64,13 @@ export default {
        if(res.code==200){
          this.$router.push("/Person")
        }
+       var obj={
+           password:this.password,
+           mobile:this.list.mobile,
+          sms_code:this.list.sms_code
+         }
+        localStorage.setItem("list", JSON.stringify(obj));
+        this.$router.push("/Person")
     }
   }
 },
@@ -78,8 +85,12 @@ export default {
 .set{
   padding-top: 10px;
 }
-.img{
+ .p1{
   width: 100%;
+  height: 100px;
+  text-align: center;
+  color: rgb(175, 172, 172);
+  margin-top: 50px;
 }
 .box {
   background-color: #fff;

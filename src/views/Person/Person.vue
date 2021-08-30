@@ -1,9 +1,13 @@
 <template>
 <div class="person">
     <div class="top" @click="deng">
-       <div class="item">
+       <div class="item" v-if="!$store.state.token">
            <p><img src="@/assets/3.png" alt="" class="p1"></p>
             <p class="p2"> 登录/注册</p>
+       </div>
+       <div class="item" v-else>
+           <p><img src="@/assets/3.png" alt="" class="p1"></p>
+            <p class="p2">{{$store.state.token.mobile}}</p>
        </div>
     </div>
     <div class="xue">
@@ -22,20 +26,32 @@
             </li>
         </ul>
     </div>
- <van-cell value="内容" is-link>
-  <!-- 使用 title 插槽来自定义标题 -->
-  <template #title>
-    <span class="custom-title">单元格</span>
-    <van-tag type="danger">标签</van-tag>
-  </template>
-</van-cell>
-
-<van-cell title="单元格" icon="shop-o">
-  <!-- 使用 right-icon 插槽来自定义右侧图标 -->
-  <template #right-icon>
-    <van-icon name="search" class="search-icon" />
-  </template>
-</van-cell>
+    <div class="con">
+       <ul>
+            <li><span>我的作业</span><p><van-icon name="arrow" /></p></li>
+            <li class="li1"><span>我的社区</span><p><van-icon name="arrow" /></p></li>
+        </ul>
+        <ul>
+            <li><span>课程订单</span><p><van-icon name="arrow" /></p></li>
+            <li><span>图书订单</span><p><van-icon name="arrow" /></p></li>
+        </ul>
+           
+        <ul>
+            <li><span>优惠券</span><p><van-icon name="arrow" /></p></li>
+            <li><span>学习卡</span><p><van-icon name="arrow" /></p></li>
+            <li><span>分销中心</span><p><van-icon name="arrow" /></p></li>
+        </ul>
+           
+        <ul>
+             <li><span>消息中心</span><p><van-icon name="arrow" /></p></li>
+            <li><span>地址管理</span><p><van-icon name="arrow" /></p></li>
+             <li><span>关于我们</span><p><van-icon name="arrow" /></p></li>
+             <li><span>意见反馈</span><p><van-icon name="arrow" /></p></li>
+             <li @click="tui"><span>设置</span><p><van-icon name="arrow" /></p></li>
+        </ul>
+           
+    
+    </div>
 </div>
 </template>
 
@@ -48,12 +64,16 @@ export default {
 
   methods: {
     deng(){
-        this.$router.push('/index')
+        this.$router.push('/login')
     },
     async gai(){
         let res=await img({file:img}).then(res=>{
             console.log(res,'ooo')
         })
+    },
+    //退出登录
+    tui(){
+        this.$router.push("/tui")
     }
 },
 
@@ -70,7 +90,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-
+   
 }
 .p1{
     width: 100px;
@@ -105,6 +125,35 @@ export default {
         .li3{
             color: rgb(204, 54, 54);
         }
+    }
+}
+.con{
+    width: 100%;
+     padding-bottom: 130px;
+    ul{
+        margin-top: 50px;
+        width: 100%;
+        background: rgb(198, 230, 243);
+        li{
+            background: white;
+            width: 100%;
+            height: 100px;
+             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            span{
+                font-size: 30px;
+            }
+            p{
+                font-size: 40px;
+                .van-icon{
+                    color: #ccc;
+                }
+            }
+        }
+
     }
 }
 

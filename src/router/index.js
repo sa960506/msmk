@@ -40,6 +40,14 @@ const routes = [
     path: '/deng',
     component: () => import('@/views/deng'),
   },
+  {
+    path: '/login',
+    component: () => import('@/views/login'),
+  },
+  {
+    path: '/tui',
+    component: () => import('@/views/tui'),
+  },
   //设置密码
   {
     path: '/set',

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import {baseUrl} from '@/config/index.js'
-
-
+import store from '../store'
 import {Toast} from "vant"
 
 // 设置axios的基地址【面试题】
@@ -23,6 +22,7 @@ service.interceptors.request.use(function (config) {
       duration:5000,
       forbidClick: true
     })
+    config.headers['Authorization']=store.state.token
     return config;
   }, function (error) {
     // 对请求错误做些什么
