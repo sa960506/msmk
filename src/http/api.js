@@ -75,7 +75,6 @@ export function infoClassfiy(arg){
     })
 }
 
-
 //修改头像
 export function img(arg){
     return service({
@@ -84,3 +83,21 @@ export function img(arg){
         method:"post"
     })
 }
+//课程列表
+export function config(arg){
+    return service({
+        url:request_ur.config,
+        data:arg, //参数
+        method:"get"
+    })
+}
+
+//课程详情
+export function teacher(arg){
+    return service({
+        url:request_ur.teacher+arg,
+        data:arg, //参数
+        method:"get"
+    })
+}
+

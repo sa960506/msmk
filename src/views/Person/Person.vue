@@ -1,13 +1,14 @@
 <template>
 <div class="person">
-    <div class="top" @click="deng">
+    <div class="top" >
        <div class="item" v-if="!$store.state.token">
            <p><img src="@/assets/3.png" alt="" class="p1"></p>
-            <p class="p2"> 登录/注册</p>
+            <p class="p2" @click="deng"> 登录/注册</p>
        </div>
        <div class="item" v-else>
-           <p><img src="@/assets/3.png" alt="" class="p1"></p>
+           <p><img src="http://120.53.31.103:84/uploads/avatar.jpg" alt="" class="p1"></p>
             <p class="p2">{{$store.state.token.mobile}}</p>
+            <p class="p4" @click="tiao">签到</p>
        </div>
     </div>
     <div class="xue">
@@ -74,6 +75,9 @@ export default {
     //退出登录
     tui(){
         this.$router.push("/tui")
+    },
+    tiao(){
+        this.$router.push('/qian')
     }
 },
 
@@ -95,11 +99,25 @@ export default {
 .p1{
     width: 100px;
     height: 100px;
+    border-radius: 50%;
 }
 .p2{
     color: white;
     font-size: 30px;
     margin-top: 10px;
+}
+.p4{
+    width: 100px;
+    height: 30px;
+    background: rgb(116, 167, 235);
+    color: white;
+    text-align: center;
+    border-top-left-radius: 20px;
+     border-bottom-left-radius: 20px;
+     font-size: 12px;
+     position: fixed;
+     right: 0;
+     top: 150px;
 }
 .xue{
     width: 100%;

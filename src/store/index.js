@@ -8,14 +8,16 @@ const vuexLocal = new VuexPersistence({
 })
 export default new Vuex.Store({
   state: {
-    token:{}
+    token:{},
+    toke:""  //cun  token
   
   },
   mutations: {
     setToken(state,arg){
       state.token=arg
       console.log(arg,"1111")
-    },
+      state.toke=arg.remeber_token
+        },
     zhe(state){
       state.token={}
     }

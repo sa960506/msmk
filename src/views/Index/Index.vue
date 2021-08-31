@@ -32,7 +32,7 @@
         <div class="box1">
             <div class="top" >
                <p><span>|</span> <b>{{list[0].channel_info.name}}</b></p>
-               <b>更多></b>
+               <b @click="go">更多></b>
             </div>
             <div class="card">
                 <van-card
@@ -41,6 +41,7 @@
                 :desc="ite.introduction"
                 :title="ite.teacher_name"
                 :thumb="ite.teacher_avatar"
+                @click="$router.push('/xiang?teacher_id='+ite.teacher_id)"
             />
             </div>
         </div>
@@ -109,6 +110,14 @@ export default {
       console.log(res, "11");
       this.list = res;
       console.log(this.list);
+    },
+    //去
+    go(){
+      this.$router.push('/ShowTeachers')
+    },
+    //详情
+    xiang(){
+      this.$router.push("/xiang")
     }
   },
 

@@ -8,5 +8,7 @@ module.exports={
     nav:"/nav", //九宫格,
     infor:"/information/index",//咨询全部内容的接口
     infoClassfiy:"/information/classify?",//咨询里面的tab字段
-    img:"/img"//咨询修改头像的接口
+    img:"/img",//咨询修改头像的接口
+    config:'/teacher/search/attrs',//课程列表数据
+    teacher:'/teacher/' ,//课程详情
 }

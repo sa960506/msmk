@@ -53,7 +53,15 @@ const routes = [
     path: '/set',
     component: () => import('@/views/set'),
   },
-
+//签到页面
+{
+  path: '/qian',
+  component: () => import('@/views/qian'),
+},
+{
+  path: '/xiang',
+  component: () => import('@/views/xiang'),
+},
 
 ]
 
