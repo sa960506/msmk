@@ -101,3 +101,45 @@ export function teacher(arg){
     })
 }
 
+//签到请求
+export function isSign(arg){
+    return service({
+        url:request_ur.isSign,
+        data:arg, //参数
+        method:"get"
+    })
+}
+
+//课程详情 主讲课程列表
+export function mainCourse(arg){
+    return service({
+        url:request_ur.mainCourse,
+        data:arg, //参数
+        method:"post"
+    })
+}
+
+//课时详情 老师教学详情
+export function courseInfo(arg){
+    return service({
+        url:request_ur.courseInfo+arg,
+        data:arg, //参数
+        method:"get"
+    })
+}
+//咨询详情
+export function detail(arg){
+    return service({
+        url:request_ur.detail,
+        data:arg, //参数
+        method:"post"
+    })
+}
+ //图书列表头部
+export function classify(arg){
+    return service({
+        url:request_ur.classify,
+        data:arg, //参数
+        method:"get"
+    })
+}

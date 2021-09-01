@@ -16,6 +16,8 @@
             :poppable="false"
             :show-confirm="false"
             :style="{ height: '300px' }"
+            :row-height="34"
+            :formatter="formatter"
             />
         </div>
         <div class="con">
@@ -49,20 +51,43 @@
 </template>
 
 <script>
+import { isSign } from "@/http/api";
 export default {
   components: {},
   data () {
     return {
-         text: '',
+     text: '',
       show: false,
+      qi:""
     }
   },
 
   // 组件方法
   methods: {
-      onConfirm(date) {
+     onConfirm(date) {
       this.show = false;
       this.text = `选择了 ${date.length} 个日期`;
+    },
+
+     async list(){
+         let res=await isSign()
+         console.log(res.data[0].date,"签到")
+         this.qi=res.data[0].data
+
+     },
+
+     formatter(day) {
+      const month = day.date.getMonth() + 1;
+      const date = day.date.getDate();
+        
+        const tady=new Date()
+        const month_new=tady.getMonth()+1
+        const date_new=tady.getDate()
+        if(month==month_new&&date_new==date){
+            day.bottomInfo="+1"
+            day.text="√"
+        }
+      return day;
     },
   },
 
@@ -70,6 +95,7 @@ export default {
   computed: {},
 
   mounted () {
+      this.list()
   },
 }
 </script> 
@@ -124,7 +150,12 @@ export default {
           width: 100%;
           height: 100%;
           border-radius: 20px;
+          .van-calendar__bottom-info{
+         bottom: 2px !important;
       }
+      }
+
+      
     }
     .con{
         width: 100%;

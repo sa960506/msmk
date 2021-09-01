@@ -1,7 +1,7 @@
 <template>
 <div class="person">
     <div class="top" >
-       <div class="item" v-if="!$store.state.token">
+       <div class="item" v-if="!$store.state.toke">
            <p><img src="@/assets/3.png" alt="" class="p1"></p>
             <p class="p2" @click="deng"> 登录/注册</p>
        </div>

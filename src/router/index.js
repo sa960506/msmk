@@ -62,6 +62,16 @@ const routes = [
   path: '/xiang',
   component: () => import('@/views/xiang'),
 },
+//课程详情页面
+{
+  path: '/kx',
+  component: () => import('@/views/kx'),
+},
+//咨询详情
+{
+  path: '/zx',
+  component: () => import('@/views/zx'),
+},
 
 ]
 

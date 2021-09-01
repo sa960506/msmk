@@ -16,7 +16,8 @@ export default new Vuex.Store({
     setToken(state,arg){
       state.token=arg
       console.log(arg,"1111")
-      state.toke=arg.remeber_token
+      state.toke=arg.remember_token
+      console.log(state.toke,"ooo")
         },
     zhe(state){
       state.token={}

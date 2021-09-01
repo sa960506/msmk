@@ -22,7 +22,7 @@ service.interceptors.request.use(function (config) {
       duration:50000,
       forbidClick: true
     })
-    config.headers['Authorization']=" Bearer "+store.state.toke
+    config.headers['Authorization']="Bearer "+store.state.toke 
     return config;
   }, function (error) {
     // 对请求错误做些什么

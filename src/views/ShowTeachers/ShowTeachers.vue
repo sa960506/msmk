@@ -1,6 +1,6 @@
 <template>
     <div class="teacher">
-        <div class="list" v-for="(item,index) in list" :key="index" >
+        <div class="list" v-for="(item,index) in list" :key="index" @click="$router.push('/xiang?teacher_id='+item.id)">
             <img :src="item.avatar" alt="" class="img">
             <div class="item">
                 <p>{{item.real_name}}</p>

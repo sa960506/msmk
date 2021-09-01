@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import { smsCode,login } from "@/http/api";
+import { smsCode, login } from "@/http/api";
 
 export default {
   components: {},
@@ -69,9 +69,9 @@ export default {
       checked: false,
       isshow: false,
       time: 60,
-      model:'',
-      password:'',
-      show:true,
+      model: "",
+      password: "",
+      show: true
     };
   },
   computed: {},
@@ -111,36 +111,36 @@ export default {
         return;
       }
       //登录
-      let res =login({
-          mobile: this.tel,
-          sms_code: this.code,
-          type: 2, //短信登录
-          client: 1 //学生端
-        }) 
-        .then(res => {
-          console.log(res);
-          if (res.code == 200) {
-            this.$router.push("/set");
-          }
-        });
+      let res = await login({
+        mobile: this.tel,
+        sms_code: this.code,
+        type: 2, //短信登录
+        client: 1 //学生端
+      });
+       if (res.code == 200) {
+          this.$router.push("/set");
+        }
+      console.log(res.data, "qq");
       var obj = {
         mobile: this.tel,
         sms_code: this.code
       };
-      this.$store.commit("setToken",res.data)
+      this.$store.commit("setToken", res.data);
     },
-    async ce(){
+    //密码登录
+    async ce() {
       let res = await login({
-          mobile: this.model,
-          password: this.password,
-          type: 1, //短信登录
-          client: "1" //学生端
-        }) 
-        console.log(res,"sdfg")
-     if(res.code==200){
-       this.$store.commit("setToken",res.data)
-       this.$router.push("/Person")
-     }
+        mobile: this.model,
+        password: this.password,
+        type: 1, //短信登录
+        client: "1" //学生端
+      });
+      console.log(res.data.remember_token,"qqqq")
+      // console.log(res.data.remember_token, "sdfg");
+      if (res.code == 200) {
+        this.$store.commit("setToken", res.data);
+        this.$router.push("/Person");
+      }
     }
   },
   created() {},
@@ -274,12 +274,12 @@ export default {
       font-size: 14px;
     }
   }
-  .tree{
+  .tree {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
-    span{
+    span {
       font-size: 12px;
       color: #ccc;
     }

@@ -11,4 +11,10 @@ module.exports={
     img:"/img",//咨询修改头像的接口
     config:'/teacher/search/attrs',//课程列表数据
     teacher:'/teacher/' ,//课程详情
+    isSign:'/user/integral/signRecord',//签到请求
+    mainCourse:'/teacher/mainCourse/',//课程详情 主讲课程列表
+    courseInfo:'/courseInfo/basis_id=',//课时详情 老师教学详情
+    detail:'/information/detail/', //咨询详情
+    classify:'/book/classify?' //图书列表头部
+    
 }

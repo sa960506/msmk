@@ -5,7 +5,7 @@
             <van-tab v-for="(item, index) in newsTab" :key="index" :title="item.name">
                <template>
                     <ul class="news-content">
-                        <li v-for="(item, index) in classfiy" :key="index" >
+                        <li v-for="(item, index) in classfiy" :key="index"  @click="$router.push('/zx?cid='+item.id)">
                             <img :src="item.thumb_img" />
                             <div>
                             <p class="name">{{ item.title }}</p>
