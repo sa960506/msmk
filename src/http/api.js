@@ -143,3 +143,11 @@ export function classify(arg){
         method:"get"
     })
 }
+//图书列表的 时间 全部数据
+export function tu(arg){
+    return service({
+        url:request_ur.tu,
+        data:arg, //参数
+        method:"get"
+    })
+}

@@ -15,6 +15,7 @@ module.exports={
     mainCourse:'/teacher/mainCourse/',//课程详情 主讲课程列表
     courseInfo:'/courseInfo/basis_id=',//课时详情 老师教学详情
     detail:'/information/detail/', //咨询详情
-    classify:'/book/classify?' //图书列表头部
+    classify:"'/book/classify?", //图书列表头部
+    tu:'/book/list/',//图书列表的 时间 全部数据
     
 }
